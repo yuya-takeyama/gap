@@ -25,7 +25,7 @@ class Gap_Request_Parameters implements Gap_Request_ParametersInterface
      *
      * @param array $parameters
      */
-    public function __construct(array $parameters)
+    public function __construct(array $parameters = array())
     {
         $this->parameters = $parameters;
     }
@@ -38,7 +38,7 @@ class Gap_Request_Parameters implements Gap_Request_ParametersInterface
      */
     public function offsetGet($key)
     {
-        return $this->parameters[$key];
+        return (isset($this->parameters[$key])) ? $this->parameters[$key] : NULL;
     }
 
     /**
