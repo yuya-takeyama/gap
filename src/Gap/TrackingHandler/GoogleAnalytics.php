@@ -54,6 +54,6 @@ class Gap_TrackingHandler_GoogleAnalytics
             $builder->setRequestPath($path);
         }
 
-        file($builder->getPageviewTrackingUrl());
+        file_get_contents($builder->getPageviewTrackingUrl());
     }
 }

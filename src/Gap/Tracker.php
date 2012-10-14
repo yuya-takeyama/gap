@@ -29,12 +29,14 @@ class Gap_Tracker
     {
         $this->trackingHandler = $params['tracking_handler'];
 
-        $this->context = new Gap_Context(
-            $params['get'],
-            $params['post'],
-            $params['request'],
-            $params['cookie'],
-            $params['server']
+        $this->trackingHandler->setContext(
+            new Gap_Context(
+                $params['get'],
+                $params['post'],
+                $params['request'],
+                $params['cookie'],
+                $params['server']
+            )
         );
     }
 

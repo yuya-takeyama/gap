@@ -13,7 +13,7 @@
  *
  * @author Yuya Takeyama
  */
-class Gap_Context
+class Gap_Context implements Gap_ContextInterface
 {
     const GOOGLE_ANALYTICS_VERSION = '5.3.6';
 
@@ -76,9 +76,14 @@ class Gap_Context
         $this->server  = $server;
     }
 
-    public function getVersion()
+    public function getGoogleAnalyticsVersion()
     {
         return self::GOOGLE_ANALYTICS_VERSION;
+    }
+
+    public function getServerName()
+    {
+        return $this->server['SERVER_NAME'];
     }
 
     public function isSsl()
@@ -95,16 +100,9 @@ class Gap_Context
         }
     }
 
-    public function geteUtmcc()
+    public function getUtmcc()
     {
-        return $this->encode(
-            '__utma=' . $this->cookie['__utma'] . ';+' .
-            '__utmz=' . $this->cookie['__utmz'] . ';'
-        );
-    }
-
-    private encode($str)
-    {
-        return str_replace(array('%28', '%29'), array('(', ')'), urlencode($str));
+        return '__utma=' . $this->cookie['__utma'] . ';+' .
+            '__utmz=' . $this->cookie['__utmz'] . ';';
     }
 }
