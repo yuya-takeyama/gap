@@ -67,15 +67,31 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
             ->getReferer()
             ->thenReturn('http://example.com/referer');
 
-        $builder = new Gap_TrackingHandler_GoogleAnalytics_UrlBuilder(
+        Phake::when($context)
+            ->getGoogleAnalyticsVersion()
+            ->thenReturn('0.0.0');
+
+        Phake::when($context)
+            ->getServerName()
+            ->thenReturn('example.net');
+
+        $builder = Phake::partialMock(
+            'Gap_TrackingHandler_GoogleAnalytics_UrlBuilder',
             self::FIXTURE_TRACKING_ID,
             $context
         );
+
+        Phake::when($builder)
+            ->getRandomNumber()
+            ->thenReturn(123456789);
 
         $builder->setRequestPath('/some/page');
 
         $this->assertEquals(
             array(
+                'utmwv' => '0.0.0',
+                'utmn'  => '123456789',
+                'utmhn' => 'example.net',
                 'utmr'  => 'http://example.com/referer',
                 'utmp'  => '/some/page',
                 'utmac' => self::FIXTURE_TRACKING_ID,

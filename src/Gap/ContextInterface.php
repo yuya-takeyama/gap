@@ -15,6 +15,10 @@
  */
 interface Gap_ContextInterface
 {
+    public function getGoogleAnalyticsVersion();
+
+    public function getServerName();
+
     public function isSsl();
 
     public function getReferer();

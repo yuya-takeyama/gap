@@ -15,6 +15,8 @@
  */
 class Gap_Context
 {
+    const GOOGLE_ANALYTICS_VERSION = '5.3.6';
+
     /**
      * GET parameters
      *
@@ -72,6 +74,11 @@ class Gap_Context
         $this->request = $request;
         $this->cookie  = $cookie;
         $this->server  = $server;
+    }
+
+    public function getVersion()
+    {
+        return self::GOOGLE_ANALYTICS_VERSION;
     }
 
     public function isSsl()

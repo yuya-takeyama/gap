@@ -17,6 +17,11 @@ class Gap_Request_ServerVariables
     extends Gap_Request_Parameters
     implements Gap_Request_ServerVariablesInterface
 {
+    public function getServerName()
+    {
+        return $this['SERVER_NAME'];
+    }
+
     /**
      * Whether on SSL
      *

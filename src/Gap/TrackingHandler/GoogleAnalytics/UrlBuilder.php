@@ -64,6 +64,9 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
     public function getParameters()
     {
         $parameters = array(
+            'utmwv' => $this->context->getGoogleAnalyticsVersion(),
+            'utmn'  => (string)$this->getRandomNumber(),
+            'utmhn' => $this->context->getServerName(),
             'utmr'  => $this->context->getReferer(),
             'utmp'  => $this->getRequestPath(),
             'utmac' => $this->trackingId,
@@ -80,5 +83,10 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
     public function getRequestPath()
     {
         return $this->path;
+    }
+
+    public function getRandomNumber()
+    {
+        return rand(0, 0x7fffffff);
     }
 }
