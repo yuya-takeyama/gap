@@ -44,6 +44,13 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
         $this->context    = $context;
     }
 
+    public function getPageviewTrackingUrl()
+    {
+        return $this->getBaseUrl() .
+            '/__utm.gif?' .
+            http_build_query($this->getParameters());
+    }
+
     /**
      * Gets the base URL of Google Analytics.
      *
@@ -52,8 +59,8 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
     public function getBaseUrl()
     {
         return $this->context->isSsl() ?
-            'https://ssl.google-analytics.com/' :
-            'http://www.google-analytics.com/';
+            'https://ssl.google-analytics.com' :
+            'http://www.google-analytics.com';
     }
 
     /**

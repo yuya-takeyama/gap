@@ -32,7 +32,7 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
         );
 
         $this->assertEquals(
-            'http://www.google-analytics.com/',
+            'http://www.google-analytics.com',
             $builder->getBaseUrl()
         );
     }
@@ -51,7 +51,7 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
         );
 
         $this->assertEquals(
-            'https://ssl.google-analytics.com/',
+            'https://ssl.google-analytics.com',
             $builder->getBaseUrl()
         );
     }
