@@ -30,6 +30,11 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
         $this->context = $context;
     }
 
+    /**
+     * Gets the base URL of Google Analytics.
+     *
+     * @return string
+     */
     public function getBaseUrl()
     {
         return $this->context->isSsl() ?
