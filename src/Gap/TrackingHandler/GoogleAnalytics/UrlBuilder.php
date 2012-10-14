@@ -16,7 +16,7 @@
 class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
 {
     /**
-     * @var Gap_Context
+     * @var Gap_ContextInterface
      */
     private $context;
 
@@ -25,8 +25,15 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
      *
      * @param Gap_Context $context
      */
-    public function __construct(Gap_Context $context)
+    public function __construct(Gap_ContextInterface $context)
     {
         $this->context = $context;
+    }
+
+    public function getBaseUrl()
+    {
+        return $this->context->isSsl() ?
+            'https://ssl.google-analytics.com/' :
+            'http://www.google-analytics.com/';
     }
 }
