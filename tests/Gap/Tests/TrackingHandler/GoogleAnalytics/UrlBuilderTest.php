@@ -63,6 +63,10 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
     {
         $context = $this->createMockContext();
 
+        Phake::when($context)
+            ->getReferer()
+            ->thenReturn('http://example.com/referer');
+
         $builder = new Gap_TrackingHandler_GoogleAnalytics_UrlBuilder(
             self::FIXTURE_TRACKING_ID,
             $context
@@ -72,6 +76,7 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
 
         $this->assertEquals(
             array(
+                'utmr'  => 'http://example.com/referer',
                 'utmp'  => '/some/page',
                 'utmac' => self::FIXTURE_TRACKING_ID,
             ),

@@ -16,4 +16,6 @@
 interface Gap_ContextInterface
 {
     public function isSsl();
+
+    public function getReferer();
 }

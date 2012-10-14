@@ -26,4 +26,14 @@ class Gap_Request_ServerVariables
     {
         return isset($this['HTTPS']) && (bool)$this['HTTPS'];
     }
+
+    public function hasReferer()
+    {
+        return isset($this['HTTP_REFERER']) && $this['HTTP_REFERER'] !== '';
+    }
+
+    public function getReferer()
+    {
+        return $this->hasReferer() ? $this['HTTP_REFERER'] : null;
+    }
 }

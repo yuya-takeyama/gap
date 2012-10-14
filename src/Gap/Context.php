@@ -78,4 +78,13 @@ class Gap_Context
     {
         return $this->server->isSsl();
     }
+
+    public function getReferer()
+    {
+        if ($this->server->hasReferer()) {
+            return $this->server->getReferer();
+        } else {
+            return '-';
+        }
+    }
 }
