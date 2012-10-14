@@ -56,6 +56,26 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
         );
     }
 
+    /**
+     * @test
+     */
+    public function getParameters()
+    {
+        $context = $this->createMockContext();
+
+        $builder = new Gap_TrackingHandler_GoogleAnalytics_UrlBuilder(
+            self::FIXTURE_TRACKING_ID,
+            $context
+        );
+
+        $this->assertEquals(
+            array(
+                'utmac' => self::FIXTURE_TRACKING_ID,
+            ),
+            $builder->getParameters()
+        );
+    }
+
     private function createMockContext()
     {
         return Phake::partialMock('Gap_ContextInterface');

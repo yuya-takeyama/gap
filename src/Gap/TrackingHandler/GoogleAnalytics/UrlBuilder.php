@@ -35,7 +35,8 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
      */
     public function __construct($trackingId, Gap_ContextInterface $context)
     {
-        $this->context = $context;
+        $this->trackingId = $trackingId;
+        $this->context    = $context;
     }
 
     /**
@@ -48,5 +49,19 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
         return $this->context->isSsl() ?
             'https://ssl.google-analytics.com/' :
             'http://www.google-analytics.com/';
+    }
+
+    /**
+     * Gets parametrs to be sent to Google Analytics.
+     *
+     * @return array
+     */
+    public function getParameters()
+    {
+        $parameters = array(
+            'utmac' => $this->trackingId,
+        );
+
+        return $parameters;
     }
 }
