@@ -94,4 +94,17 @@ class Gap_Context
             return '-';
         }
     }
+
+    public function geteUtmcc()
+    {
+        return $this->encode(
+            '__utma=' . $this->cookie['__utma'] . ';+' .
+            '__utmz=' . $this->cookie['__utmz'] . ';'
+        );
+    }
+
+    private encode($str)
+    {
+        return str_replace(array('%28', '%29'), array('(', ')'), urlencode($str));
+    }
 }

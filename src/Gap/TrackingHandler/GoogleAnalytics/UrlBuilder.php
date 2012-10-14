@@ -70,6 +70,7 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
             'utmr'  => $this->context->getReferer(),
             'utmp'  => $this->getRequestPath(),
             'utmac' => $this->trackingId,
+            'utmcc' => $this->context->getUtmcc(),
         );
 
         return $parameters;

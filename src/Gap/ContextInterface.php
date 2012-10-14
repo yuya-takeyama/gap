@@ -22,4 +22,6 @@ interface Gap_ContextInterface
     public function isSsl();
 
     public function getReferer();
+
+    public function getUtmcc();
 }

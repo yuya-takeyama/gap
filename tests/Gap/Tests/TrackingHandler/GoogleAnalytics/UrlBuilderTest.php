@@ -75,6 +75,10 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
             ->getServerName()
             ->thenReturn('example.net');
 
+        Phake::when($context)
+            ->getUtmcc()
+            ->thenReturn('UTMCCSTRING');
+
         $builder = Phake::partialMock(
             'Gap_TrackingHandler_GoogleAnalytics_UrlBuilder',
             self::FIXTURE_TRACKING_ID,
@@ -95,6 +99,7 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
                 'utmr'  => 'http://example.com/referer',
                 'utmp'  => '/some/page',
                 'utmac' => self::FIXTURE_TRACKING_ID,
+                'utmcc' => 'UTMCCSTRING',
             ),
             $builder->getParameters()
         );
