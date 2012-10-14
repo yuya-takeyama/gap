@@ -16,6 +16,13 @@
 class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
 {
     /**
+     * Google Analytics tracking ID
+     *
+     * @var string
+     */
+    private $trackingId;
+
+    /**
      * @var Gap_ContextInterface
      */
     private $context;
@@ -23,9 +30,10 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
     /**
      * Constructor.
      *
+     * @param string      $trackingId
      * @param Gap_Context $context
      */
-    public function __construct(Gap_ContextInterface $context)
+    public function __construct($trackingId, Gap_ContextInterface $context)
     {
         $this->context = $context;
     }

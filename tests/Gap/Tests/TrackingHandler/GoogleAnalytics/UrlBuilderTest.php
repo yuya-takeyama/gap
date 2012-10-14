@@ -16,6 +16,8 @@
 class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
     extends PHPUnit_Framework_TestCase
 {
+    const FIXTURE_TRACKING_ID = 'UA-XXXXXXXX-X';
+
     /**
      * @test
      */
@@ -24,7 +26,10 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
         $context = $this->createMockContext();
         Phake::when($context)->isSsl()->thenReturn(false);
 
-        $builder = new Gap_TrackingHandler_GoogleAnalytics_UrlBuilder($context);
+        $builder = new Gap_TrackingHandler_GoogleAnalytics_UrlBuilder(
+            self::FIXTURE_TRACKING_ID,
+            $context
+        );
 
         $this->assertEquals(
             'http://www.google-analytics.com/',
@@ -40,7 +45,10 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
         $context = $this->createMockContext();
         Phake::when($context)->isSsl()->thenReturn(true);
 
-        $builder = new Gap_TrackingHandler_GoogleAnalytics_UrlBuilder($context);
+        $builder = new Gap_TrackingHandler_GoogleAnalytics_UrlBuilder(
+            self::FIXTURE_TRACKING_ID,
+            $context
+        );
 
         $this->assertEquals(
             'https://ssl.google-analytics.com/',
