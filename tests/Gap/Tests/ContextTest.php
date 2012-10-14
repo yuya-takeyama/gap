@@ -23,7 +23,22 @@ class Gap_Tests_ContextTest extends PHPUnit_Framework_TestCase
         $server = $this->getMock('Gap_Request_ServerVariablesInterface');
         $server->expects($this->any())
             ->method('isSsl')
-            ->will($this->returnValue('true'));
+            ->will($this->returnValue(true));
+
+        $this->assertTrue($server->isSsl());
+    }
+
+    /**
+     * @test
+     */
+    public function isSsl_should_be_false_if_not_SSL()
+    {
+        $server = $this->getMock('Gap_Request_ServerVariablesInterface');
+        $server->expects($this->any())
+            ->method('isSsl')
+            ->will($this->returnValue(false));
+
+        $this->assertFalse($server->isSsl());
     }
 
     private function createContextWithServerVariables(
