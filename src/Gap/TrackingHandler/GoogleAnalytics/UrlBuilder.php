@@ -28,6 +28,11 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
     private $context;
 
     /**
+     * @var string
+     */
+    private $requestPath;
+
+    /**
      * Constructor.
      *
      * @param string      $trackingId
@@ -59,9 +64,20 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
     public function getParameters()
     {
         $parameters = array(
+            'utmp'  => $this->getRequestPath(),
             'utmac' => $this->trackingId,
         );
 
         return $parameters;
+    }
+
+    public function setRequestPath($path)
+    {
+        $this->path = $path;
+    }
+
+    public function getRequestPath()
+    {
+        return $this->path;
     }
 }

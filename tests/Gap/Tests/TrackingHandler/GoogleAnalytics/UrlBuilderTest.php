@@ -59,7 +59,7 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
     /**
      * @test
      */
-    public function getParameters()
+    public function getParameters_returns_parameters_as_array()
     {
         $context = $this->createMockContext();
 
@@ -68,8 +68,11 @@ class Gap_Tests_TrackingHandler_GoogleAnalytics_UrlBuilderTest
             $context
         );
 
+        $builder->setRequestPath('/some/page');
+
         $this->assertEquals(
             array(
+                'utmp'  => '/some/page',
                 'utmac' => self::FIXTURE_TRACKING_ID,
             ),
             $builder->getParameters()
