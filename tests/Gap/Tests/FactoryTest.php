@@ -18,7 +18,7 @@ class Gap_Tests_ContextFactoryTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function create_should_create_FeaturePhoneContext_if_it_is_request_by_feature_phone()
+    public function createContext_should_create_FeaturePhoneContext_if_it_is_request_by_feature_phone()
     {
         $server = $this->getMock('Gap_Request_ServerVariablesInterface');
         $server->expects($this->any())
@@ -27,13 +27,13 @@ class Gap_Tests_ContextFactoryTest extends PHPUnit_Framework_TestCase
 
         $factory = $this->createContextFactoryWithServerVariables($server);
 
-        $this->assertInstanceOf('Gap_FeaturePhoneContext', $factory->create());
+        $this->assertInstanceOf('Gap_FeaturePhoneContext', $factory->createContext());
     }
 
     /**
      * @test
      */
-    public function create_should_not_create_FeaturePhoneContext_if_it_is_not_request_by_feature_phone()
+    public function createContext_should_not_create_FeaturePhoneContext_if_it_is_not_request_by_feature_phone()
     {
         $server = $this->getMock('Gap_Request_ServerVariablesInterface');
         $server->expects($this->any())
@@ -42,8 +42,10 @@ class Gap_Tests_ContextFactoryTest extends PHPUnit_Framework_TestCase
 
         $factory = $this->createContextFactoryWithServerVariables($server);
 
-        $this->assertNotInstanceOf('Gap_FeaturePhoneContext', $factory->create());
-        $this->assertInstanceOf('Gap_Context', $factory->create());
+        $context = $factory->createContext();
+
+        $this->assertNotInstanceOf('Gap_FeaturePhoneContext', $context);
+        $this->assertInstanceOf('Gap_Context', $context);
     }
 
     private function createContextFactoryWithServerVariables(Gap_Request_ServerVariablesInterface $server)

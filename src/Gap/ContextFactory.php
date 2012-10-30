@@ -72,7 +72,7 @@ class Gap_ContextFactory
         $this->server  = $server;
     }
 
-    public function create()
+    public function createContext()
     {
         if ($this->server->isFeaturePhone()) {
             return new Gap_FeaturePhoneContext(
