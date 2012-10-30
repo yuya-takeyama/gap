@@ -24,4 +24,8 @@ interface Gap_ContextInterface
     public function getReferer();
 
     public function getUtmcc();
+
+    public function hasUtmip();
+
+    public function getUtmip();
 }

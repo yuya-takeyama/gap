@@ -80,6 +80,10 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
             'utmcc' => $this->context->getUtmcc(),
         );
 
+        if ($this->context->hasUtmip()) {
+            $parameters['utmip'] = $this->context->getUtmip();
+        }
+
         return $parameters;
     }
 

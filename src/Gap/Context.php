@@ -22,35 +22,35 @@ class Gap_Context implements Gap_ContextInterface
      *
      * @var Gap_Request_ParametersInterface
      */
-    private $get;
+    protected $get;
 
     /**
      * POST parameters
      *
      * @var Gap_Request_ParametersInterface
      */
-    private $post;
+    protected $post;
 
     /**
      * Request parameters
      *
      * @var Gap_Request_ParametersInterface
      */
-    private $request;
+    protected $request;
 
     /**
      * Cookie
      *
      * @var Gap_Request_CookieInterface
      */
-    private $cookie;
+    protected $cookie;
 
     /**
      * Server variables
      *
      * @var Gap_Request_ServerVariablesInterface
      */
-    private $server;
+    protected $server;
 
     /**
      * Constructor.
@@ -104,5 +104,15 @@ class Gap_Context implements Gap_ContextInterface
     {
         return '__utma=' . $this->cookie['__utma'] . ';+' .
             '__utmz=' . $this->cookie['__utmz'] . ';';
+    }
+
+    public function hasUtmip()
+    {
+        return false;
+    }
+
+    public function getUtmip()
+    {
+        return null;
     }
 }
