@@ -32,6 +32,11 @@ class Gap_Request_ServerVariables
         return isset($this['HTTPS']) && (bool)$this['HTTPS'];
     }
 
+    public function isFeaturePhone()
+    {
+        return preg_match('/^DoCoMo|^UP\.Browser|^KDDI|^J-PHONE|^Vodafone|^MOT-|^SoftBank/', $this['HTTP_USER_AGENT']) > 0;
+    }
+
     public function hasReferer()
     {
         return isset($this['HTTP_REFERER']) && $this['HTTP_REFERER'] !== '';
