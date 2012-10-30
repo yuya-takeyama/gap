@@ -25,19 +25,15 @@ class Gap_Tracker
      */
     private $context;
 
-    public function __construct(array $params)
+    public function __construct(
+        Gap_TrackingHandler_TrackingHandlerInterface $handler,
+        Gap_ContextInterface                         $context
+    )
     {
-        $this->trackingHandler = $params['tracking_handler'];
+        $this->trackingHandler = $handler;
+        $this->context         = $context;
 
-        $this->trackingHandler->setContext(
-            new Gap_Context(
-                $params['get'],
-                $params['post'],
-                $params['request'],
-                $params['cookie'],
-                $params['server']
-            )
-        );
+        $this->trackingHandler->setContext($context);
     }
 
     public function trackPageview($path = null)
