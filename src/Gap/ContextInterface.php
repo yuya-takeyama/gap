@@ -28,4 +28,10 @@ interface Gap_ContextInterface
     public function hasUtmip();
 
     public function getUtmip();
+
+    public function hasUtmvid();
+
+    public function setUtmvid($utmvid);
+
+    public function getUtmvid($gaAccount = null);
 }

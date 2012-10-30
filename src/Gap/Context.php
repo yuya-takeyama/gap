@@ -52,6 +52,8 @@ class Gap_Context implements Gap_ContextInterface
      */
     protected $server;
 
+    protected $utmvid;
+
     /**
      * Constructor.
      *
@@ -114,5 +116,20 @@ class Gap_Context implements Gap_ContextInterface
     public function getUtmip()
     {
         return null;
+    }
+
+    public function hasUtmvid()
+    {
+        return isset($this->utmvid);
+    }
+
+    public function setUtmvid($utmvid)
+    {
+        $this->utmvid = $utmvid;
+    }
+
+    public function getUtmvid($gaAccount = null)
+    {
+        return isset($this->utmvid) ? $this->utmvid : null;
     }
 }
