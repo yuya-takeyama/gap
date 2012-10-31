@@ -17,7 +17,7 @@ $factory = new Gap_ContextFactory(
 );
 
 $context = $factory->createContext();
-$handler = new Gap_TrackingHandler_GoogleAnalytics('UA-12392004-1');
+$handler = new Gap_TrackingHandler_GoogleAnalytics('UA-XXXXXXXX-X');
 $tracker = new Gap_Tracker($handler, $context);
 
 $tracker->trackPageview('/_tracking/registration.html');
