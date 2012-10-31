@@ -70,18 +70,24 @@ class Gap_TrackingHandler_GoogleAnalytics_UrlBuilder
      */
     public function getParameters()
     {
+        $trackingId = $this->trackingId;
+
+        if ($this->context->isFeaturePhone()) {
+            $trackingId = preg_replace('/^UA/', 'MO', $trackingId);
+        }
+
         $parameters = array(
             'utmwv' => $this->context->getGoogleAnalyticsVersion(),
             'utmn'  => (string)$this->getRandomNumber(),
             'utmhn' => $this->context->getServerName(),
             'utmr'  => $this->context->getReferer(),
             'utmp'  => $this->getRequestPath(),
-            'utmac' => $this->trackingId,
+            'utmac' => $trackingId,
             'utmcc' => $this->context->getUtmcc(),
         );
 
         if ($this->context->hasUtmvid()) {
-            $parameters['utmvid'] = $this->context->getUtmvid($this->trackingId);
+            $parameters['utmvid'] = $this->context->getUtmvid($trackingId);
         }
 
         if ($this->context->hasUtmip()) {

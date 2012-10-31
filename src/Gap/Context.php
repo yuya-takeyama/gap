@@ -132,4 +132,9 @@ class Gap_Context implements Gap_ContextInterface
     {
         return isset($this->utmvid) ? $this->utmvid : null;
     }
+
+    public function isFeaturePhone()
+    {
+        return $this->server->isFeaturePhone();
+    }
 }
