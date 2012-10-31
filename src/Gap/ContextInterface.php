@@ -34,4 +34,6 @@ interface Gap_ContextInterface
     public function setUtmvid($utmvid);
 
     public function getUtmvid($gaAccount = null);
+
+    public function isFeaturePhone();
 }
